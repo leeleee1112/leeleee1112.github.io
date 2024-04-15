@@ -1,3 +1,85 @@
+//1번문제
+<!DOCTYPE html>
+<html>
+<head>
+    <title>합과 곱 계산하기</title>
+</head>
+<body>
+    <form method="post">
+        <label for="n">n까지의 숫자를 출력할 개수를 입력하세요:</label>
+        <input type="number" id="n" name="n" min="1">
+        <button type="submit">계산하기</button>
+    </form>
+
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $n = $_POST["n"];
+        $sum = 0;
+        $product = 1;
+
+        echo "<h2>1부터 $n까지의 숫자:</h2>";
+        echo "<p>";
+        for ($i = 1; $i <= $n; $i++) {
+            echo "$i ";
+            $sum += $i;
+            $product *= $i;
+        }
+        echo "</p>";
+
+        echo "<h2>전체 합:</h2>";
+        echo "<p>$sum</p>";
+
+        echo "<h2>전체 곱:</h2>";
+        echo "<p>$product</p>";
+    }
+    ?>
+</body>
+</html>
+//2번문제 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>정수 랜덤넘버 생성 및 소팅</title>
+</head>
+<body>
+    <form method="post">
+        <label for="count">생성할 정수 랜덤넘버 개수를 입력하세요 (10 이상 100 이하):</label>
+        <input type="number" id="count" name="count" min="10" max="100">
+        <button type="submit">생성 및 소팅</button>
+    </form>
+
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $count = $_POST["count"];
+        $numbers = array();
+
+        // n개의 정수 랜덤넘버 생성
+        for ($i = 0; $i < $count; $i++) {
+            $numbers[] = rand(1, 1000); // 1부터 1000까지의 랜덤 정수 생성
+        }
+
+        // 생성된 결과 출력
+        echo "<h2>생성된 랜덤넘버:</h2>";
+        echo "<p>";
+        foreach ($numbers as $num) {
+            echo "$num ";
+        }
+        echo "</p>";
+
+        // 오름차순으로 소팅
+        sort($numbers);
+
+        // 소팅된 결과 출력
+        echo "<h2>오름차순으로 소팅된 결과:</h2>";
+        echo "<p>";
+        foreach ($numbers as $num) {
+            echo "$num ";
+        }
+        echo "</p>";
+    }
+    ?>
+</body>
+</html>
 //3번문제
 <!DOCTYPE html>
 <html>
